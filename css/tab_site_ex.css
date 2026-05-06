@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.header {
+  width: 100%;
+  line-height: 70px;
+  background-color: aliceblue;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+.header .inner {
+  max-width: 960px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+.tab-nav {
+  width: 560px;
+  display: flex;
+  text-align: center;
+}
+.tab-nav li {
+  width: calc(100% / 5);
+}
+.tab-nav li a {
+  display: block;
+  font-weight: bold;
+}
+.tab-nav li a:hover,
+.tab-nav li a.active {
+  background-color: rgb(147, 197, 240);
+  color: #fff;
+}
+
+/* 보이는 영역 */
+.section {
+  width: 1200px;
+  margin: auto;
+  position: relative;
+}
+.tabitem {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.tabitem.active {
+  display: block;
+}
+.tabitem img {
+  width: 100%;
+  display: block;
+}
+.content {
+  position: absolute;
+  top: 20%;
+  right: 20px;
+  width: 40%;
+  color: #fff;
+  text-align: right;
+}
+.content .title {
+  margin-bottom: 20px;
+}
+.readmore {
+  display: inline-block;
+  padding: 3px 6px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #fff;
+  margin-top: 20px;
+}
