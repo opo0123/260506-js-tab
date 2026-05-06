@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tab 기능</title>
+    <style>
+      .tab-content {
+        display: none;
+      }
+      .tab-btn {
+        border: 1px solid #333;
+        border-radius: 6px;
+        padding: 5px 10px;
+      }
+      .tab-btn.active {
+        background-color: #333;
+        color: #fff;
+      }
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab-menu">
+      <button class="tab-btn active">공지</button>
+      <button class="tab-btn">리뷰</button>
+      <button class="tab-btn">문의</button>
+    </div>
+    <!-- 탭 내용 -->
+    <div class="tab-content active">공지 내용</div>
+    <div class="tab-content">리뷰 내용</div>
+    <div class="tab-content">문의 내용</div>
+
+    <script>
+      const btns = document.querySelectorAll(".tab-btn");
+      const contents = document.querySelectorAll(".tab-content");
+
+      btns.forEach((btn, index) => {
+        // console.log(btn, index); // 하나씩 찍히는지 확인
+
+        btn.addEventListener("click", () => {
+          // console.log("click"); // 클릭 되는지 확인
+
+          // 전체 초기화 (active 없애고 시작)
+          // 1. 모든 버튼 off
+          btns.forEach((b) => {
+            b.classList.remove("active");
+          });
+          // 2. 모든 내용 off
+          contents.forEach((c) => {
+            c.classList.remove("active");
+          });
+
+          // 3. click한 버튼 on
+          btn.classList.add("active");
+          // 4. click한 버튼의 내용만 on
+          contents[index].classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
