@@ -8,7 +8,8 @@
       .tab-content {
         display: none;
       }
-      .tab-btn {
+      .tab-btn,
+      .more-btn {
         border: 1px solid #333;
         border-radius: 6px;
         padding: 5px 10px;
@@ -20,6 +21,39 @@
       .tab-content.active {
         display: block;
       }
+
+      /* 더보기 */
+      .detail-wrap {
+        width: 200px;
+        position: relative;
+      }
+      .img-box {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+      }
+      .img-box img {
+        width: 100%;
+        display: block;
+      }
+      .img-box.active {
+        height: auto;
+      }
+      .more-btn {
+        display: block;
+      }
+      .fade-area {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        background: linear-gradient(
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 1)
+        );
+      }
     </style>
   </head>
   <body>
@@ -27,11 +61,20 @@
       <button class="tab-btn active">공지</button>
       <button class="tab-btn">리뷰</button>
       <button class="tab-btn">문의</button>
+      <button class="tab-btn">상세보기</button>
     </div>
     <!-- 탭 내용 -->
     <div class="tab-content active">공지 내용</div>
     <div class="tab-content">리뷰 내용</div>
     <div class="tab-content">문의 내용</div>
+    <div class="tab-content detail-wrap">
+      <div class="img-box">
+        <img src="images/image.png" alt="이미지" />
+      </div>
+      <div class="fade-area">
+        <button class="more-btn">더보기</button>
+      </div>
+    </div>
 
     <script>
       const btns = document.querySelectorAll(".tab-btn");
@@ -58,6 +101,21 @@
           // 4. click한 버튼의 내용만 on
           contents[index].classList.add("active");
         });
+      });
+
+      // 더보기 버튼 클릭 시
+      const detailBtn = document.querySelector(".more-btn");
+      const imgBox = document.querySelector(".img-box");
+
+      detailBtn.addEventListener("click", () => {
+        imgBox.classList.toggle("active");
+
+        // 버튼 글자 바꾸기
+        if (imgBox.classList.contains("active")) {
+          detailBtn.textContent = "닫기";
+        } else {
+          detailBtn.textContent = "더보기";
+        }
       });
     </script>
   </body>
